@@ -26,7 +26,7 @@ define( 'DB_NAME', 'bundl' );
 define( 'DB_USER', 'root' );
 
 /** MySQL database password */
-define( 'DB_PASSWORD', 'root@2019' );
+define( 'DB_PASSWORD', 'aPZ@f9&d' );
 
 /** MySQL hostname */
 define( 'DB_HOST', 'localhost' );
