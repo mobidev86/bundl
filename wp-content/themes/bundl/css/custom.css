@@ -332,12 +332,20 @@ h1, h2, h3, h4, h5, h6 {
 .section-stories {
 
 }
-.section-stories .elementor-heading-title {
+.section-stories h2.elementor-heading-title {
 	font-family: 'MuseoSansW01-900';
 	color: #303030;
 	margin: 0;
 	font-size: 60px;
 	line-height: normal;
+}
+.section-stories h4.elementor-heading-title {
+	font-family: 'MuseoSansW01-900';
+	color: #303030;
+	margin:4em 0 0;
+	font-size: 14px;
+	line-height: normal;
+	letter-spacing: normal;
 }
 .section-stories .elementor-text-editor p {
 	font-family: 'Museo Sans 300';
