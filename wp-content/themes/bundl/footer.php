@@ -59,12 +59,25 @@
 	    function checkScreenSize(){
 	        var newWindowWidth = $(window).width();
 	        if (newWindowWidth < 768) {
-	            $("ul.offices li").click(function() {
+	            $("ul.offices1 li").click(function() {
 					$(this).toggleClass("on");
 					$(".open").slideToggle();
 				});
 	        }
 	    }
+
+	    // Sticky Header
+		$(window).scroll(function(){
+		  var sticky = $('#masthead'),
+		      scroll = $(window).scrollTop();
+
+		    
+			  if (scroll > 750 ){
+			  	sticky.addClass('sticky');
+			  } else {
+			  	sticky.removeClass('sticky');
+			  }	
+		});		
 
 });
 		</script>

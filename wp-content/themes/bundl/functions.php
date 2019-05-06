@@ -308,7 +308,6 @@ function bundl_widgets_init() {
 	);	
 }
 add_action( 'widgets_init', 'bundl_widgets_init' );
-
 if ( ! function_exists( 'bundl_fonts_url' ) ) :
 	/**
 	 * Register Google fonts for Twenty Sixteen.
@@ -383,6 +382,7 @@ function bundl_scripts() {
 	// Theme block stylesheet.
 	//wp_enqueue_style( 'custom', get_template_directory_uri() . '/css/custom.css', array( 'bundl-style' ), '20181230' );
 	wp_enqueue_style( 'custom', get_stylesheet_directory_uri() . '/css/custom.css');
+	wp_enqueue_style( 'custom-demo', get_stylesheet_directory_uri() . '/css/custom-demo.css');
 	wp_enqueue_style( 'Font Awesome', get_stylesheet_directory_uri() . '/css/font-awesome.css');
 	wp_enqueue_style( 'bundl-block-style', get_template_directory_uri() . '/css/blocks.css', array( 'bundl-style' ), '20181230' );
 
@@ -399,6 +399,17 @@ function bundl_scripts() {
 	wp_style_add_data( 'bundl-ie7', 'conditional', 'lt IE 8' );
 
 	// Load the html5 shiv.
+	
+	//wp_enqueue_script( 'jquery-waypoints-js', get_template_directory_uri() . '/js/jquery.waypoints.min.js', array('jquery'));
+	//wp_enqueue_script( 'inview.min-js', get_template_directory_uri() . '/js/inview.min.js', array('jquery'));
+	wp_enqueue_script( 'tweenmax-min-js', get_template_directory_uri() . '/js/TweenMax.min.js', array());
+	wp_enqueue_script( 'scrollmagic-js', get_template_directory_uri() . '/js/ScrollMagic.min.js', array('jquery'));
+	wp_enqueue_script( 'animation-gsap-js', get_template_directory_uri() . '/js/animation.gsap.js', array('jquery'));
+	wp_enqueue_script( 'debug-addIndicators-min-js', get_template_directory_uri() . '/js/debug.addIndicators.min.js', array('jquery'));
+	
+	wp_enqueue_script( 'morphext-js', get_template_directory_uri() . '/js/morphext.js', array('jquery'));
+	wp_enqueue_script( 'custom-js', get_template_directory_uri() . '/js/custom.js', array('jquery'));
+	wp_enqueue_script( 'slider-js', get_template_directory_uri() . '/js/ScrollMagic1.js', array('jquery'));
 	wp_enqueue_script( 'bundl-html5', get_template_directory_uri() . '/js/html5.js', array(), '3.7.3' );
 	wp_script_add_data( 'bundl-html5', 'conditional', 'lt IE 9' );
 
@@ -586,7 +597,48 @@ function bundl_widget_tag_cloud_args( $args ) {
 
 	return $args;
 }
+
+//custome type post
+function cptui_register_my_cpts_portfolio() {
+
+	/**
+	 * Post Type: portfolio.
+	 */
+
+	$labels = array(
+		"name" => __( "portfolio", "twentyseventeen" ),
+		"singular_name" => __( "portfolio", "twentyseventeen" ),
+		"menu_name" => __( "Portfolio", "twentyseventeen" ),
+		"view_item" => __( "Home page", "twentyseventeen" ),
+		"view_items" => __( "Home page", "twentyseventeen" ),
+	);
+
+	$args = array(
+		"label" => __( "portfolio", "twentyseventeen" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		"has_archive" => true,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail", "excerpt", "trackbacks", "custom-fields", "comments", "revisions", "author", "page-attributes", "post-formats", "portfolio" ),
+		"taxonomies" => array( "category", "post_tag" ),
+	);
+
+	register_post_type( "portfolio", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_portfolio' );
+
 add_filter( 'widget_tag_cloud_args', 'bundl_widget_tag_cloud_args' );
-
-
 require get_template_directory() . '/elementor-widget/blog-display-main.php';
+require get_template_directory() . '/custom-functions/functions.php';
