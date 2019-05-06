@@ -25,7 +25,7 @@
 <body <?php body_class(); ?>>
 <div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
-		<header id="masthead" class="site-header" role="banner">
+		<header id="masthead" class="site-header light-transparent" role="banner">
 			<div class="site-header-top">
 				<div class="logo">
 					<?php twentysixteen_the_custom_logo(); ?>					
@@ -60,27 +60,31 @@
 					</div><!-- .site-header-menu -->
 				<?php endif; ?>
 			</div><!-- .site-header-main -->
-			<div class="category-menu">
-				<div class="site-inner">
-					<button id="categorymenu" class="dropbtn blogfilterbtn"><span>All</span>
-						<svg data-name="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 35">
-							<title>Filter</title><path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5" d="M2.5 17.5h36M2.5 2.5h36M2.5 32.5h36"></path>
-						</svg>
-					</button>
-				<?php if ( has_nav_menu( 'category_menu' ) ) : ?>
-					<nav class="categorymenu category-menuopen" role="navigation" aria-label="<?php esc_attr_e( 'Category Menu', 'twentysixteen' ); ?>">
-						<?php
-							wp_nav_menu(
-								array(
-									'theme_location' => 'category_menu',
-									'menu_class' => 'categorymenu',
-								)
-							);
-						?>
-					</nav><!-- .main-navigation -->
-				<?php endif; ?>				
-			</div>
-			</div>	
+
+			<?php if( is_page( array( 10 ) ) || is_category() ||  is_singular('post')  ) { ?>
+				<div class="category-menu">
+					<div class="site-inner">
+						<button id="categorymenu" class="dropbtn blogfilterbtn"><span>All</span>
+							<svg data-name="4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 41 35">
+								<title>Filter</title><path fill="none" stroke="#fff" stroke-linecap="round" stroke-miterlimit="10" stroke-width="5" d="M2.5 17.5h36M2.5 2.5h36M2.5 32.5h36"></path>
+							</svg>
+						</button>
+						<?php if ( has_nav_menu( 'category_menu' ) ) : ?>
+							<nav class="categorymenu category-menuopen" role="navigation" aria-label="<?php esc_attr_e( 'Category Menu', 'twentysixteen' ); ?>">
+								<?php
+									wp_nav_menu(
+										array(
+											'theme_location' => 'category_menu',
+											'menu_class' => 'categorymenu',
+										)
+									);
+								?>
+							</nav><!-- .main-navigation -->
+						<?php endif; ?>				
+					</div>
+				</div>	
+			<?php }?>
+
 		</header><!-- .site-header -->
 		<div class="site-inner-box">
 		<div id="content" class="site-content">

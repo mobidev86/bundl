@@ -20,7 +20,7 @@ class Widget_Custom_Elementor_BlogDisplay extends Widget_Base {
       	$this->start_controls_section(
          	'section_title',
          	[
-            	'label' => __( 'BUNDL: Blog Posts', 'elementor' ),
+            	'label' => __( 'BUNDL: Home Services', 'elementor' ),
          	]
       	);
 
@@ -122,7 +122,7 @@ class Widget_Custom_Elementor_BlogDisplay extends Widget_Base {
 		            while ( $my_posts->have_posts() ) : $my_posts->the_post(); 
 		            $counter++;
 		           	?>
-		            	<div class="<?php if($counter == 1){ echo $full_width_blog; }else{echo 'small-box';} ?>">
+		            	<div class="<?php if($counter == 1 && !empty($full_width_blog)){ echo $full_width_blog; }else{echo 'small-box';} ?>">
 		            		 <div class="post_image">
 
 			            		<?php $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>

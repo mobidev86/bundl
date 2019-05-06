@@ -11,7 +11,7 @@ function blogdisplay_add_elementor_widget( $elements_manager ) {
 }
 add_action( 'elementor/elements/categories_registered', 'blogdisplay_add_elementor_widget' );
 
-/* Sustainable widget register */
+/* Blogdisplay widget register */
 ElementorSustainableElement::get_instance()->init();
 class ElementorSustainableElement {
     private static $instance = null;
@@ -29,6 +29,35 @@ class ElementorSustainableElement {
           $template_file = locate_template($widget_file);
           if ( !$template_file || !is_readable( $template_file ) ) {
               $template_file = get_stylesheet_directory().'/elementor-widget/elementor/blog-display-callback.php';
+          }
+          if ( $template_file && is_readable( $template_file ) ) {
+              require_once $template_file;
+          }
+        }
+    }
+}
+
+
+/* Home services widget register */
+ElementorHomeServicesElement::get_instance()->init();
+class ElementorHomeServicesElement {
+    private static $instance = null;
+        public static function get_instance() {
+            if ( ! self::$instance )
+            self::$instance = new self;
+            return self::$instance;
+    }
+
+    public function init(){
+        add_action( 'elementor/widgets/widgets_registered', array( $this, 'widgets_registered' ) );
+    }
+
+    public function widgets_registered() {
+        if(defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base')){
+          $widget_file = 'plugins/elementor/my-widget.php';
+          $template_file = locate_template($widget_file);
+          if ( !$template_file || !is_readable( $template_file ) ) {
+              $template_file = get_stylesheet_directory().'/elementor-widget/elementor/home-service-callback.php';
           }
           if ( $template_file && is_readable( $template_file ) ) {
               require_once $template_file;
@@ -70,7 +99,7 @@ function load_posts_by_ajax_callback() {
         while ( $my_posts->have_posts() ) : $my_posts->the_post(); 
         $counter++;
         ?>
-          <div class="<?php if($counter == 1){ echo $full_width_blog; }else{echo 'small-box';} ?>">
+          <div class="<?php if($counter == 1 && !empty($full_width_blog)){ echo $full_width_blog; }else{echo 'small-box';} ?>">
             <div class="post_image">
               <?php $image_url = get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>
               <?php if(!empty($image_url)) {?>
