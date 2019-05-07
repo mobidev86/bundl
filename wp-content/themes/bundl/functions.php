@@ -622,7 +622,7 @@ function cptui_register_my_cpts_portfolio() {
 		"show_ui" => true,
 		"show_in_rest" => false,
 		"rest_base" => "",
-		"has_archive" => true,
+		//"has_archive" => true,
 		"show_in_menu" => true,
 		"exclude_from_search" => false,
 		"capability_type" => "post",
@@ -631,13 +631,97 @@ function cptui_register_my_cpts_portfolio() {
 		"rewrite" => array( "slug" => "", "with_front" => true ),
 		"query_var" => true,
 		"supports" => array( "title", "editor", "thumbnail", "excerpt", "trackbacks", "custom-fields", "comments", "revisions", "author", "page-attributes", "post-formats", "portfolio" ),
-		"taxonomies" => array( "category", "post_tag" ),
+		//"taxonomies" => array( "category", "post_tag" ),
 	);
 
 	register_post_type( "portfolio", $args );
 }
-
 add_action( 'init', 'cptui_register_my_cpts_portfolio' );
+
+
+//custome type post
+function cptui_register_my_cpts_career() {
+/**
+	 * Post Type: Career
+	 */
+
+	$labels = array(
+		"name" => __( "career", "twentyseventeen" ),
+		"singular_name" => __( "career", "twentyseventeen" ),
+		"menu_name" => __( "Career", "twentyseventeen" ),
+		"view_item" => __( "Home page", "twentyseventeen" ),
+		"view_items" => __( "Home page", "twentyseventeen" ),
+	);
+
+	$args = array(
+		"label" => __( "career", "twentyseventeen" ),
+		"labels" => $labels,
+		"description" => "",
+		"public" => true,
+		"publicly_queryable" => true,
+		"show_ui" => true,
+		"show_in_rest" => false,
+		"rest_base" => "",
+		//"has_archive" => true,
+		"show_in_menu" => true,
+		"exclude_from_search" => false,
+		"capability_type" => "post",
+		"map_meta_cap" => true,
+		"hierarchical" => false,
+		"rewrite" => array( "slug" => "", "with_front" => true ),
+		"query_var" => true,
+		"supports" => array( "title", "editor", "thumbnail", "excerpt", "trackbacks", "custom-fields", "comments", "revisions", "author", "page-attributes", "post-formats", "career" ),
+		//"taxonomies" => array( "category", "post_tag" ),
+	);
+
+	register_post_type( "career", $args );
+}
+
+add_action( 'init', 'cptui_register_my_cpts_career' );
+
+
+if ( ! function_exists( 'career_cat_callback' ) ) {
+
+// Register Custom Taxonomy
+function career_cat_callback() {
+
+	$labels = array(
+		'name'                       => _x( 'Career categories', 'Taxonomy General Name', 'twentyseventeen' ),
+		'singular_name'              => _x( 'Career category', 'Taxonomy Singular Name', 'twentyseventeen' ),
+		'menu_name'                  => __( 'Career category', 'twentyseventeen' ),
+		'all_items'                  => __( 'All Career category', 'twentyseventeen' ),
+		'parent_item'                => __( 'Parent Career category', 'twentyseventeen' ),
+		'parent_item_colon'          => __( 'Parent Career category:', 'twentyseventeen' ),
+		'new_item_name'              => __( 'New Item Name', 'twentyseventeen' ),
+		'add_new_item'               => __( 'Add New Item', 'twentyseventeen' ),
+		'edit_item'                  => __( 'Edit Item', 'twentyseventeen' ),
+		'update_item'                => __( 'Update Item', 'twentyseventeen' ),
+		'view_item'                  => __( 'View Item', 'twentyseventeen' ),
+		'separate_items_with_commas' => __( 'Separate items with commas', 'twentyseventeen' ),
+		'add_or_remove_items'        => __( 'Add or remove items', 'twentyseventeen' ),
+		'choose_from_most_used'      => __( 'Choose from the most used', 'twentyseventeen' ),
+		'popular_items'              => __( 'Popular Items', 'twentyseventeen' ),
+		'search_items'               => __( 'Search Items', 'twentyseventeen' ),
+		'not_found'                  => __( 'Not Found', 'twentyseventeen' ),
+		'no_terms'                   => __( 'No items', 'twentyseventeen' ),
+		'items_list'                 => __( 'Items list', 'twentyseventeen' ),
+		'items_list_navigation'      => __( 'Items list navigation', 'twentyseventeen' ),
+	);
+	$args = array(
+		'labels'                     => $labels,
+		'hierarchical'               => true,
+		'public'                     => true,
+		'show_ui'                    => true,
+		'show_admin_column'          => true,
+		'show_in_nav_menus'          => true,
+		'show_tagcloud'              => true,
+	);
+	register_taxonomy( 'career_cat', array( 'career' ), $args );
+
+}
+add_action( 'init', 'career_cat_callback', 0 );
+
+}
 
 add_filter( 'widget_tag_cloud_args', 'bundl_widget_tag_cloud_args' );
 require get_template_directory() . '/elementor-widget/blog-display-main.php';

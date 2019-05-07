@@ -1092,6 +1092,22 @@ function pubequalHeights($toCheck, $toSet) {
 	$toSet.height(heighestHeight)
 };
 
+//if ($('.blogContent').length){
+    $(window).scroll(function () {
+        var top = $(window).scrollTop();
+        var offsetTop = $('.blogContent').offset().top;
+        var offsetBot = $('.subscribe-cta').offset().top;
+
+        if ($(window).width() > 992){
+            if ((offsetTop - 120 < top) && (offsetBot - 320 > top)){
+                $('.blogContent .social-links').addClass('fixed');
+            } else {
+                $('.blogContent .social-links').removeClass('fixed');
+            }
+        }
+    });
+//}
+
 $(document).ready(function () {
 	$(".js-rotating").Morphext({
 		animation: "fadeIn",
