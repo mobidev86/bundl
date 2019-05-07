@@ -234,17 +234,33 @@ h1, h2, h3, h4, h5, h6 {
 	border-bottom: 2px solid #f6f6f6;
 	font-size: 14px;
 }
-.category-menu ul li a:hover,.category-menu ul li.current-menu-item a {
+.category-menu ul li a:hover,.category-menu ul li.current-menu-item a,.category-menu ul li.current-menu-parent a {
     color: #00a98e;
     border-bottom: 2px solid #00a98e;
     outline: none;
 }
 /*------Home-------*/
 .section-intro {
-	background-position-x: -250px !important;
-	position: relative;
+	height:100vh;
+	text-align:center;
+	padding-top:56px;
+	background-color:#fff;
+	min-height: 590px;
+	background-size: cover;
 }
-.section-intro:before,.home-recent-stories:before {
+@media screen and (min-width: 768px) {
+	.section-intro {
+		height:calc(100vh - 180px);
+		background-position:0 0;
+		background-position-x:-345px !important;
+	}
+}
+@media screen and (min-width: 1800px) {
+	.section-intro {
+		background-position-x:-250px !important;
+	}
+}
+.home-recent-stories:before {
 	background: url(../images/arrow-black.svg)  center center no-repeat;
 	content: "";
 	position: absolute;
@@ -252,6 +268,17 @@ h1, h2, h3, h4, h5, h6 {
 	height: 40px;
 	width: 100%;
 	z-index: 10;
+}
+.section-gradient:before {
+	top: 0;
+	background: url(../images/arrow-black.svg)  center center no-repeat;
+	content: "";
+	position: relative;
+	height: 40px;
+	width: 100%;
+	z-index: 10;
+	margin-top: -70px;
+	display: block;
 }
 .home-recent-stories:before {
 	top: 0;
@@ -289,7 +316,9 @@ h1, h2, h3, h4, h5, h6 {
     top: 50%;
     transform: translateY(-50%);
 }*/
-
+.section-intro .btn-green {
+	padding-bottom: 10%;
+}
 .btn-green .elementor-widget-container .elementor-button-wrapper .elementor-button {
 	background-color: #009f8e;
 	padding: 15px 20px;
@@ -314,6 +343,7 @@ h1, h2, h3, h4, h5, h6 {
 	text-transform: none;
 	font-weight: normal;
 	margin-bottom: 10px;
+	margin-top: 30px;
 }
 .animate-text h2,.animate-text h3 {
 	font-family: 'MuseoSansW01-900';
@@ -807,7 +837,7 @@ max-width:1180px
 
 .section-stories h4.elementor-heading-title {
 	font-family: 'MuseoSansW01-900';
-	color: #303030;
+	color: #000;
 	margin:4em 0 0;
 	font-size: 14px;
 	line-height: normal;
@@ -834,7 +864,7 @@ max-width:1180px
 	margin-right: 60px;
 	width: 100px;
 	height: 75px;
-	opacity: 0.4;
+	opacity: .4;
 }
 .section-stories .steam {
     position: absolute;
@@ -953,9 +983,6 @@ max-width:1180px
 	}
 }
 
-.section-intro-future {
-
-}
 .section-intro-future .elementor-heading-title {
 	font-family: 'MuseoSansW01-900';
 	color: #fff;
@@ -1249,8 +1276,16 @@ max-width:1180px
 	max-width: 1170px;
 	margin: 0 auto;
 }
+.joincontainer {
+	margin: 0 auto;
+	-webkit-box-flex: 0;
+	-ms-flex: 0 0 66.666667%;
+	flex: 0 0 66.666667%;
+	max-width: 66.666667%;
+	max-width: 1000px;
+}
 .single-inside {
-	width: 66.66666667%;
+	width: 750px;
 	margin: 0 auto;
 	padding: 0 15px;
 }
@@ -1355,6 +1390,11 @@ max-width:1180px
     padding: 25px 0;
     position: absolute;
 }
+.blogContent .col-md-offset-2 {
+	margin-left: 16.66666667%;
+	width: 66.66666667%;
+	padding-left: 15px;
+}
 /*--END--blognewsletter-------*/
 .blognewsletter-in {
 	margin: 0 auto;
@@ -1377,9 +1417,310 @@ max-width:1180px
     margin-bottom: 40px;
     font-weight: 900;
 }
+/*--Related articles Page--*/
+.blogSection {
+    
+}
+.relatedItems {
+	background-color: #f6f6f6;
+}
+.blogContent .fixed {
+    position: fixed;
+    top: 120px;
+    z-index: 10;
+}
+.blogSection .related-title {
+    margin-top: 0;
+    font-size: 36px;
+    font-family: 'Museo Sans 700';
+    color: #000;
+    margin-bottom: 80px;
+    padding-top: 67px;
+    text-align: center;
+    display: block;
+    width: 100%;
+}
 /*--END--single-------*/
+/*--END--join Page-------*/
+.section-join-intro {
 
+}
+.section-join-intro .elementor-widget-container .elementor-heading-title {
+	padding: 0 5%;
+}
+.bundl-team-section .vacancy-block {
+    padding: 50px 0;
+}
+.bundl-team-section.avail-section .vacancy-block {
+    padding:30px 0 0;
+}
+.bundl-team-section .team-logo {
+	text-align: center;
+	width: 100%;
+	display: inline-block;
+}
+.bundl-team-section .vacancy-global-bundl-team .title{
+	line-height: 1.2;
+	margin: 0;
+    padding-bottom: 5px;
+    font-size: 32px;
+    font-family: 'MuseoSansW01-900';
+}
+.bundl-team-section .vacancy-global-bundl-team .subtitle {
+	color: #009f8e;
+	font-size: 14px;
+	line-height: 1.2;
+	font-weight: 900;
+	margin: 0 0 30px;
+}
+.bundl-team-section .text-center,
+.avail-section .text-center {
+	text-align: center;
+}
+.bundl-team-section .content{
+	border-bottom: 1px solid #f0f1f1;
+}
+.bundl-team-section.avail-section .content{
+	border-bottom: 1px solid #d8d8d8;
+}
+.bundl-team-section.section-yondr .content{
+	border-bottom: 1px solid #d8d8d8;
 
+}
+.bundl-team-section .content:last-child,.avail-section .content:last-child,.section-yondr .content:last-child {
+	border-bottom: 0;
+}
+.bundl-team-section .content > a {
+    padding: 20px 35px;
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+.bundl-team-section .content:hover a{
+	background: rgba(248,248,248,0.8);
+}
+.bundl-team-section .column-logo {
+	width: 17%;
+	padding: 0 15px;
+	text-align: center;
+}
+.bundl-team-section  .column-logo img {
+    max-height: 100%;
+   	max-width: 53px;
+    margin: 0 auto;
+}
+.bundl-team-section.avail-section  .column-logo img {
+	width: 100%;
+	max-width: 74px;
+	text-align: center;
+}
+.bundl-team-section .column-text  {
+	width: 67.5%;
+	padding: 0 15px;
+	text-align: left;
+}
+.bundl-team-section .column-link {
+	width: 15.5%;
+	padding: 0 15px;
+	text-align: center;
+	font-family: 'Museo Sans 700';
+}
+.bundl-team-section .position {
+	font-size: 18px;
+	font-family: 'Museo Sans 700';
+    color: #000;
+}
+.bundl-team-section .description {
+	font-size: 18px;
+	font-family: 'Museo Sans 700';
+    color: #000;
+}
+.bundl-team-section .apply {
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #000;
+}
+.bundl-team-section a:hover .apply {
+    color: #009f8e;
+}
+.vacancy-block.dark {
+    background-color: #f9f9f9;
+    background-image: url(../images/wolk.png),url(../images/wolk-1.png),-moz-linear-gradient(top,rgba(249,249,249,1) 0%,rgba(240,241,241,1) 36%,rgba(249,249,249,1) 100%);
+    background-image: url(../images/wolk.png),url(../images/wolk-1.png),-webkit-linear-gradient(top,rgba(249,249,249,1) 0%,rgba(240,241,241,1) 36%,rgba(249,249,249,1) 100%);
+    background-image: url(../images/wolk.png),url(../images/wolk-1.png),linear-gradient(to bottom,rgba(249,249,249,1) 0%,rgba(240,241,241,1) 36%,rgba(249,249,249,1) 100%);
+    background-repeat: no-repeat,no-repeat,no-repeat;
+    background-position: 0 0,100% 0,0 0;
+    background-size: contain;
+}
+.avail-section .partner-content {
+	padding: 20px 0;
+}
+.avail-section .partner-content {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.avail-section .column-partner {
+	width: 70%;
+	padding: 0 15px;
+	text-align: left;
+}
+.avail-section .partner-content .column-link {
+	width: 15%;
+	padding: 0 4px;
+	text-align: right;
+}
+.avail-section .partner-title {
+	font-size: 18px;
+	font-family: 'Museo Sans 700';
+    color: #000;
+}
+.avail-section .partner-subtitle {
+	font-size: 18px;
+	font-family: 'Museo Sans 700';
+    color: #000;
+}
+.avail-section .column-link a {
+    height: 30px;
+    line-height: 30px;
+    padding: 0 15px;
+    border-radius: 3px;
+    margin-bottom: 7px;
+    font-size: 11px;
+   font-family: 'MuseoSansW01-900';
+    display: inline-block;
+    transition: background-color .1s linear,color .1s linear;
+    letter-spacing: 2px;
+    width: 100%;
+    text-transform: uppercase;
+    color: #fff;
+	background: #009f8e;
+	text-align: center;
+}
+.avail-section .column-link.column-link-partner-case a {
+	background: #000;
+}
+.avail-section .partner-content .column-link-partner-website a:hover {
+    background-color: #006b60;
+}
+.avail-section .partner-content .column-link-partner-case a:hover {
+    opacity: .8;
+}
+
+.avail-section.yondr-section .vacancy-block.dark .content a{
+	padding: 20px;
+}
+.avail-section .vacancy-block.dark .content:hover a {
+    background: #fff;
+}
+.section-yondr {
+	padding-top: 50px;
+	padding-bottom: 60px;
+}
+/*-------------Join Single Page--------*/
+.section-job-description-title .elementor-widget-container .elementor-heading-title {
+	font-size: 38px;
+	font-family: 'MuseoSansW01-900';
+	padding-bottom: 40px;
+	line-height: 1.2;
+}
+.section-job-description-content .elementor-text-editor p {
+	font-size: 18px;
+	color: #fff;
+	line-height: 1.6;
+	font-family: 'Museo Sans 100';
+	text-align: center;
+}
+.section-job-description-listing .elementor-widget-wrap > .elementor-widget:not(:last-child) {
+	margin-bottom: 0;
+}
+.section-job-description-listing .elementor-widget-container .elementor-heading-title {
+	font-size: 14px;
+	font-family: 'MuseoSansW01-900';
+	padding: 25px 0 10px;
+	margin: 0;
+	text-transform: uppercase;
+	color: #009f8e;
+}
+.section-job-description-listing .elementor-icon-list-items li {
+	color: #fff;
+	line-height: 1.6;
+	margin-top: 15px;
+	font-size: 16px;
+	font-family: 'Museo Sans 100';
+	padding-left: 10px;
+}
+.section-job-description-listing .listing-left,.section-job-description-listing .listing-right {
+	padding: 75px 5%;
+}
+.section-job-description-listing .description-listing-title {
+	padding-top: 100px;
+}
+.description-listing-inline .elementor-widget-container {
+	text-align: center;
+}
+.description-listing-inline .elementor-widget-container .elementor-icon-list-items {
+	text-align: center;
+	display: inline-block;
+}
+.description-listing-inline .elementor-widget-container .elementor-icon-list-items li  {
+	color: #009f8e;
+	font-size: 12px;
+	font-family: 'MuseoSansW01-900';
+	text-transform: uppercase;
+	margin-right: 25px !important;
+	display: inline-block;
+}
+.section-reasons .elementor-widget-container .elementor-heading-title {
+    font-size: 38px;
+    color: #303030;
+    padding-bottom: 30px;
+    font-family: 'MuseoSansW01-900';
+    line-height: 1.2;
+}
+.section-reasons .elementor-widget-container .elementor-text-editor p {
+	font-size: 18px;
+    line-height: 1.6;
+    color: #303030;
+    font-family: 'Museo Sans 300';
+}
+.reasons-illustration .elementor-widget-container .elementor-image img  {
+	position: relative;
+	margin: 0 auto;
+	max-width: 110px;
+}
+.reasons-illustration .elementor-widget-container .elementor-heading-title {
+    font-size: 14px;
+    color: #303030;
+    text-transform: uppercase;
+	padding: 0;
+    font-family: 'MuseoSansW01-900';
+    line-height: 1.2;
+}
+.reasons-illustration .elementor-widget-container .elementor-text-editor p {
+    font-size: 15px;
+    color: #303030;
+    line-height: 1.6;
+    font-family: 'Museo Sans 300';
+}
+.section-apply .elementor-widget-container .elementor-heading-title {
+    font-size: 38px;
+    color: #fff;
+	padding: 0 0 40px;
+	margin: 0;
+    font-family: 'MuseoSansW01-900';
+    line-height: 1.2;
+}
+.section-apply .elementor-widget-container .elementor-text-editor p {
+    font-size: 18px;
+    color: #fff;
+    line-height: 1.6;
+    font-family: 'Museo Sans 300';
+}
 .once-every-title {
 	margin-bottom: 0 !important;
 }
@@ -1504,14 +1845,29 @@ body .gform_wrapper ul li.gfield {
 /*--END--Home Page--*/
 
 /*--Portfolio Page--*/
-.section-portfolio-intro {
-	margin-top: -69px !important;
+.section-portfolio-intro,.section-join-intro,.join-single-full{
+	margin-top: -70px !important;
 }
-.section-portfolio-intro .elementor-heading-title {
+.section-portfolio-intro .elementor-widget-container .elementor-heading-title, .section-join-intro .elementor-widget-container .elementor-heading-title,.join-single .elementor-widget-container .elementor-heading-title  {
 	color: #fff;
 	font-family: 'MuseoSansW01-900';
 	font-size: 70px;
 	text-align: center;
+	margin: 0 0 25px;
+	line-height: 1.2;
+}
+.join-single .btn-green .elementor-button {
+	max-width: 200px;
+	display: block;
+	margin: 0 auto;
+}
+.join-single .elementor-text-editor {
+	font-size: 14px;
+	color: #fff;
+	text-transform: uppercase;
+	font-family: 'MuseoSansW01-900';
+	margin: 0;
+	padding: 25px;
 }
 .section-onthe-market .elementor-widget-container .elementor-heading-title {
 	font-family: 'Museo Sans 700';
@@ -1767,24 +2123,7 @@ body .gform_wrapper ul li.gfield {
 	}
 }
 /*--END--Portfolio Page--*/
-/*--Related articles Page--*/
-.blogSection {
-    padding-top: 67px;
-}
-.relatedItems {
-	background-color: #f6f6f6;
-}
-.blogSection .related-title {
-    margin-top: 0;
-    font-size: 36px;
-    font-family: 'Museo Sans 700';
-    color: #000;
-    margin-bottom: 80px;
-    text-align: center;
-    display: block;
-    width: 100%;
-}
-/*--END--Related articles Page--*/
+
 
 /*--Footer--*/
 .footer {
@@ -1997,13 +2336,26 @@ section {
 	.stories-left {
 		padding-left: 25px;
 	}
+	.blogTitel h1 {
+    	font-size: 36px;
+	}
+
 }
 
 @media screen and (max-width: 991px) {
+	.avail-section .column-partner {
+		width: 100%;
+		margin: 0 35px;
+		padding: 20px;
+	}
+	.avail-section .partner-content .column-link {
+		margin: 0 auto;
+		width: 82%;
+	}
 	.site-header .site-header-top {
-		background-color: rgba(255,255,255,0.95);
+		/*background-color: rgba(255,255,255,0.95);
 		box-shadow: 0 0 15px rgba(0,0,0,0.05);
-		z-index: 120;
+		z-index: 120;*/
 	}
 	.site-header {
 		position: relative;
@@ -2058,6 +2410,25 @@ section {
 	    display: block;
 	    position: relative;
 	}
+	.single #categorymenu {
+		display: none;
+	}
+	.single .category-menuopen {
+		display: block!important;
+		top: auto !important;
+		width: 100%;
+	}
+	.single .category-menu ul {
+		width: 100%;
+	}
+	.single .category-menu ul li {
+		display: inline-block;
+		width: auto;
+	}
+	.single .category-menu {
+		height: auto;
+		padding: 0 15px;
+	}
 	.blogfilterbtn {
 		margin: 0;
 		display: block;
@@ -2097,7 +2468,7 @@ section {
 		top: 44px;
 		left: 0px;
 		width: 230px;
-		z-index: 888;
+		z-index: 20;
 		background-color: #f6f6f6;
 	}
 	.category-menu ul li {
@@ -2241,6 +2612,37 @@ section {
 	.entry-content {
 		margin: 0;
 	}
+	.blogTitel {
+    	padding: 70px 0 50px;
+	}
+	.single-inside {
+		width: 100%;
+	}
+	.blogTitel h1 {
+    	font-size: 34px;
+	}
+	.single .category-menuopen {
+		display: block!important;
+		top: auto !important;
+		width: 100%;
+	}
+	.single .category-menu ul {
+		width: 100%;
+	}
+	.single .category-menu ul li {
+		display: inline-block;
+		width: 100%;
+	}
+	.blogContent .social-links {
+		position: relative;
+		width: 100%;
+	}
+	.blognewsletter-form .gform_wrapper .gform_title {
+    	font-size: 30px;
+    	margin-bottom: 15px;
+    	padding-left: 15px;
+    	padding-right: 15px;
+	}
 	.featured-story-layers div {
 		right: 0;
 		width: 100%;
@@ -2352,7 +2754,7 @@ section {
 		background-position: 100% 100% !important;
 		height: 50vh;
 		text-align: center;
-		min-height: auto;
+		min-height: auto!important;
 	}
 	.section-intro .elementor-container {
 		min-height: auto !important;
@@ -2410,7 +2812,7 @@ section {
 	.section-pillars {
 		padding-bottom: 0px;
 	}
-	.section-portfolio-intro .elementor-heading-title {
+	.section-portfolio-intro .elementor-heading-title,.section-join-intro .elementor-heading-title {
 		font-size: 30px;
 	}
 	.section-onthe-market .elementor-widget-container .elementor-heading-title {
@@ -2421,6 +2823,38 @@ section {
 	}
 	.section-portfolio {
 		padding-bottom: 0;
+	}
+	.subscribe-cta  {
+		padding-top: 70px;
+		padding-bottom: 70px;
+	}
+	.join-single .elementor-widget-container .elementor-heading-title {
+		font-size: 30px;
+		margin-bottom: 0;
+	}
+	.join-single .elementor-text-editor ,.join-single .elementor-text-editor p {
+		margin-bottom: 0;
+		padding-bottom: 0;
+	}
+	.section-job-description-title .elementor-widget-container .elementor-heading-title,
+	.section-reasons .elementor-widget-container .elementor-heading-title {
+		font-size: 24px;
+	}
+	.section-job-description-content .elementor-text-editor p,
+	.section-reasons .elementor-widget-container .elementor-text-editor p {
+		font-size: 14px;
+	}
+	.section-job-description-listing .listing-left, .section-job-description-listing .listing-right {
+		padding: 15px 5%;
+	}
+	.section-job-description-listing .description-listing-title {
+		padding-top: 40px;
+	}
+	.section-job-description-listing .elementor-icon-list-items li {
+		font-size: 14px;
+	}
+	.description-listing-inline {
+		display: none;
 	}
 }
 @media screen and (max-width: 640px) {
@@ -2443,6 +2877,30 @@ section {
 	.footer-bottom {
 		padding-right: 15px;
 		padding-left: 15px;
+	}
+}
+@media screen and (max-width: 575px) {
+	.bundl-team-section .vacancy-global-bundl-team .title {
+		font-size: 25px;
+	}
+	.bundl-team-section .column-logo,.bundl-team-section .column-text,.bundl-team-section .column-link {
+		width: 100%;
+		text-align: center;
+	}
+	.bundl-team-section .content {
+		margin: 0 4%;
+	}
+	.avail-section .column-partner {
+		width: 100%;
+		margin: 0 4%;
+		padding: 20px;
+	}
+	.avail-section .partner-content .column-link {
+		margin: 0 auto;
+		width: 66%;
+	}
+	.bundl-team-section .content > a {
+		padding: 20px;
 	}
 }
 @media screen and (max-width: 549px) {

@@ -52,6 +52,8 @@
                 </li>
             </ul>
         </div>
+        <div class="col-md-offset-2">
+        <div class="intro">
 		<?php
 			the_content();
 
@@ -70,7 +72,9 @@
 				get_template_part( 'template-parts/biography' );
 			}
 			?>
+		</div>
 	</div><!-- .entry-content -->
+</div>
 	</div>	
 	<div class="blogFooter">
 		<div class="singlecontainer">
@@ -114,7 +118,7 @@
 <section class="blogSection relatedItems">
 	<div class="singlecontainer">
 		<div class="cykl-team-in row related">
-				<h2 class="related-title">Related articles</h2>
+			
 	      		<?php
 
 	      	$categories = get_the_category(get_the_ID());
@@ -136,6 +140,7 @@
 		    $found_posts =  $my_posts->found_posts; 
 		    if ( $my_posts->have_posts() ) : 
 		    ?>
+		    <h2 class="related-title">Related articles</h2>
 		        <div class="my-posts">
 		            <?php 
 		            $counter = 0;

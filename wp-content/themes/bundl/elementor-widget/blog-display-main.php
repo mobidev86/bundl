@@ -66,6 +66,36 @@ class ElementorHomeServicesElement {
     }
 }
 
+/* Home services widget register */
+ElementorCareerElement::get_instance()->init();
+class ElementorCareerElement {
+    private static $instance = null;
+        public static function get_instance() {
+            if ( ! self::$instance )
+            self::$instance = new self;
+            return self::$instance;
+    }
+
+    public function init(){
+        add_action( 'elementor/widgets/widgets_registered', array( $this, 'widgets_registered' ) );
+    }
+
+    public function widgets_registered() {
+        if(defined('ELEMENTOR_PATH') && class_exists('Elementor\Widget_Base')){
+          $widget_file = 'plugins/elementor/my-widget.php';
+          $template_file = locate_template($widget_file);
+          if ( !$template_file || !is_readable( $template_file ) ) {
+              $template_file = get_stylesheet_directory().'/elementor-widget/elementor/career-callback.php';
+          }
+          if ( $template_file && is_readable( $template_file ) ) {
+              require_once $template_file;
+          }
+        }
+    }
+}
+
+
+/*******Ajax Callback Function **********/
 add_action('wp_ajax_load_posts_by_ajax', 'load_posts_by_ajax_callback');
 add_action('wp_ajax_nopriv_load_posts_by_ajax', 'load_posts_by_ajax_callback');
 function load_posts_by_ajax_callback() {
