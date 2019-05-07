@@ -7,5 +7,6 @@ pages:
  - if [ -z "$webroot" ]; then echo "Need to set webroot" && exit 1; fi
  - sudo rsync -rv ./ $webroot --exclude '.git' --exclude '.gitlab-ci.yml' --exclude 'wp-config.php' --exclude '.gitignore' --delete
  - sudo chown root:root $webroot -R
+ - sudo chmod -R 777 '/var/www/html/bundl/wp-content/uploads'
  only:
  - master
