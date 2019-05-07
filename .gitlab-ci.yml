@@ -8,7 +8,8 @@ pages:
  - sudo rsync -rv ./ $webroot --exclude '.git' --exclude '.gitlab-ci.yml' --exclude 'wp-config.php' --exclude '.gitignore' --delete
  - sudo chown root:root $webroot -R
  - cd $webroot
- - sudo chmod -R 777 wp-content/themes/bundl/cache
+ - sudo chmod -R 777 'wp-content/themes/bundl/cache'
+ - sudo chmod 777 'timthumb.php'
  
  only:
  - master
