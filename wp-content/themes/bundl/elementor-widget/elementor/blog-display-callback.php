@@ -121,6 +121,8 @@ class Widget_Custom_Elementor_BlogDisplay extends Widget_Base {
 		            $default_image = esc_url(get_template_directory_uri())."/elementor-widget/images/no-image.png";
 		            while ( $my_posts->have_posts() ) : $my_posts->the_post(); 
 		            $counter++;
+		            $format = get_post_format( get_the_ID() );
+
 		           	?>
 		            	<div class="<?php if($counter == 1 && !empty($full_width_blog)){ echo $full_width_blog; }else{echo 'small-box';} ?>">
 		            		 <div class="post_image">
@@ -142,7 +144,7 @@ class Widget_Custom_Elementor_BlogDisplay extends Widget_Base {
 			            	</div>
 			            			
 			            	<div class="post_content">		
-			            		<div class="post_category">
+			            		<div class="post_category <?php echo $format; ?>">
 			            			<span>
 						            <?php
 						            	$categories = get_the_category();
@@ -193,6 +195,8 @@ class Widget_Custom_Elementor_BlogDisplay extends Widget_Base {
 		var page = 2;
 		jQuery(function($) {
 		    $('body').on('click', '.loadmore', function() {
+		    	var loadmore = $(this);
+		    	loadmore.addClass('progress');
 		        var data = {
 		            'action': 'load_posts_by_ajax',
 		            'page': page,
@@ -206,6 +210,7 @@ class Widget_Custom_Elementor_BlogDisplay extends Widget_Base {
 		        	var data;
 		        	data = JSON.parse(response);
 		            $('.my-posts').append(data.post_data);
+		            loadmore.removeClass('progress');
 		            console.log(data.hide_load_more);
 		            if(data.hide_load_more == 'yes'){
 		            	$('.loadmore').hide();

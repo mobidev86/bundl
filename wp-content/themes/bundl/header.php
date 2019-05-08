@@ -23,12 +23,46 @@
 </head>
 
 <body <?php body_class(); ?>>
+	<?php 
+		
+		
+	?>
 <div id="page" class="site">
 		<a class="skip-link screen-reader-text" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
 		<header id="masthead" class="site-header light-transparent" role="banner">
 			<div class="site-header-top">
 				<div class="logo">
-					<?php twentysixteen_the_custom_logo(); ?>					
+					<?php 
+						//twentysixteen_the_custom_logo(); 
+						$white_logo = get_field('white_logo', 'option');
+						$black_logo = get_field('black_logo', 'option');
+						$enable_banner = get_field('enable_banner');
+						$class_for_menu = $class_for_default_logo = "";
+						if($enable_banner[0] == 'yes'){
+							$class_for_menu = 'enable_banner';
+							$class_for_default_logo = "hide";
+							echo '<a href="'.site_url().'" class="white_logo"><img src="'.$white_logo.'"></a>';
+						?>
+							<script type="text/javascript">
+								jQuery('document').ready(function(){
+									$(window).scroll(function(){
+								    	scroll = $(window).scrollTop();
+										if (scroll > 750 ){
+											$('a.white_logo').hide();
+											$('a.default_logo').show();
+											$('ul.primary-menu').removeClass('enable_banner');
+										} else {
+											$('a.default_logo').hide();
+											$('a.white_logo').show();
+											$('ul.primary-menu').addClass('enable_banner');
+										}	
+									});
+								});
+							</script>
+						<?php	
+						}
+						echo '<a href="'.site_url().'" class="default_logo '.$class_for_menu.'"><img src="'.$black_logo.'"></a>';
+					?>					
 				</div><!-- .site-branding -->
 				<?php if ( has_nav_menu( 'primary' ) || has_nav_menu( 'social' ) ) : ?>
 					<div id="triplebars">
@@ -44,7 +78,7 @@
 									wp_nav_menu(
 										array(
 											'theme_location' => 'primary',
-											'menu_class' => 'primary-menu',
+											'menu_class' => "primary-menu {$class_for_menu}",
 										)
 									);
 								?>

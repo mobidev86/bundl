@@ -138,6 +138,8 @@ class Widget_Custom_Elementor_Career extends Widget_Base {
 						    $found_posts =  $career_jobs->found_posts; 
 						    if ( $career_jobs->have_posts() ) :
 						    	while ( $career_jobs->have_posts() ) : $career_jobs->the_post(); 
+						    		$suburb = get_field('suburb');
+						    		$state = get_field('state');
 							    	?>
 									<div class="row content col-sm-10 col-md-8 col-10">
 										<a href="<?php echo get_the_permalink(); ?>">
@@ -146,7 +148,19 @@ class Widget_Custom_Elementor_Career extends Widget_Base {
 											</div>
 											<div class="align-self-center column-text col-sm-8">
 												<div class="position"><?php echo get_the_title(); ?></div>
-												<div class="description"><?php echo get_field('location'); ?></div>
+												<div class="description">
+													<?php 
+														if(!empty($suburb)){
+															echo $suburb;
+														}
+														if(!empty($suburb) && !empty($state)){
+															echo ",";
+															echo $state;
+														}else{
+															echo $state;
+														}
+													?>
+												</div>
 											</div>
 											<div class="column-link col-sm-2 align-self-center"> <span class="apply">Apply now</span>
 											</div>
@@ -182,10 +196,10 @@ class Widget_Custom_Elementor_Career extends Widget_Base {
 								</div>
 								<div class="col-lg-1 col-xl-1"></div>
 								<div class="column-link column-link-partner-case  col-sm-6 col-md-6 col-8 col-lg-6 col-xl-2 align-self-center">
-									<a href="<?php echo $website_link; ?>">view website</a>
+									<a href="<?php echo $website_link; ?>" target="_blank">view website</a>
 								</div>
 								<div class="column-link column-link-partner-website col-sm-6 col-md-6 col-8  col-lg-3 col-xl-2 align-self-center">
-									<a href="<?php echo $job_page_link; ?>">apply now</a>
+									<a href="<?php echo $job_page_link; ?>" target="_blank">apply now</a>
 								</div>
 							</div>
 							<?php 
@@ -206,6 +220,8 @@ class Widget_Custom_Elementor_Career extends Widget_Base {
 			    				$found_posts =  $career_jobs->found_posts; 
 			    				if ( $career_jobs->have_posts() ) :
 			    					while ( $career_jobs->have_posts() ) : $career_jobs->the_post(); 	
+			    						$suburb = get_field('suburb');
+						    			$state = get_field('state');
 										?>
 										<div class="row content col-sm-10 col-md-8 col-10">
 											<a href="<?php echo get_field('job_application_link'); ?>">
@@ -214,7 +230,18 @@ class Widget_Custom_Elementor_Career extends Widget_Base {
 												</div>
 												<div class="align-self-center column-text col-sm-8">
 													<div class="position"><?php echo get_the_title(); ?></div>
-													<div class="description"><?php echo get_field('location'); ?></div>
+													<div class="description">
+													<?php 
+														if(!empty($suburb)){
+															echo $suburb;
+														}
+														if(!empty($suburb) && !empty($state)){
+															echo ",";
+															echo $state;
+														}else{
+															echo $state;
+														}
+													?></div>
 												</div>
 												<div class="column-link col-sm-2 align-self-center"> <span class="apply">apply now</span>
 												</div>
