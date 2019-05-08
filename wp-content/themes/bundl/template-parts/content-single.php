@@ -12,9 +12,10 @@
 		<div class="blogTitel">
 			<div class="singlecontainer">
 				<div class="single-inside">
-					<div class="blogInfo video">
+					<div class="blogInfo <?php echo get_post_format( get_the_ID() ); ?>">
 	        			<span>
 			            <?php
+
 			            	$categories = get_the_category();
 							$separator = ' ';
 							$output = '';
@@ -52,8 +53,7 @@
                 </li>
             </ul>
         </div>
-        <div class="col-md-offset-2">
-        <div class="intro">
+        <div class="blogContent-in">        
 		<?php
 			the_content();
 
@@ -71,8 +71,7 @@
 			if ( '' !== get_the_author_meta( 'description' ) ) {
 				get_template_part( 'template-parts/biography' );
 			}
-			?>
-		</div>
+			?>		
 	</div><!-- .entry-content -->
 </div>
 	</div>	

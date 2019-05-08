@@ -3,12 +3,12 @@ namespace Elementor;
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /* Team module */
-class Widget_Custom_Elementor_HomeServices extends Widget_Base {
+class Widget_Custom_Elementor_CareerReasons extends Widget_Base {
    	public function get_name() {
-     	return 'team_app';
+     	return 'career_reasons_app';
    	}
    	public function get_title() {
-      	return __( 'BUNDL: Home Services', 'elementor-custom-element' );
+      	return __( 'BUNDL: Career Reasons', 'elementor-custom-element' );
    	}
    	public function get_icon() {
       	return 'eicon-skill-bar';
@@ -20,13 +20,13 @@ class Widget_Custom_Elementor_HomeServices extends Widget_Base {
       	$this->start_controls_section(
          	'section_title',
          	[
-            	'label' => __( 'Home Services', 'elementor' ),
+            	'label' => __( 'Career Reasons', 'elementor' ),
          	]
       	);
       	$team_repeater = new \Elementor\Repeater();
       	
       	$team_repeater->add_control(
-			'service_image',
+			'career_reason_image',
 			[
 				'label' => __( 'Choose Image', 'plugin-domain' ),
 				'type' => \Elementor\Controls_Manager::MEDIA,
@@ -37,15 +37,15 @@ class Widget_Custom_Elementor_HomeServices extends Widget_Base {
 		);
 
 		$team_repeater->add_control(
-			'service_title', [
+			'career_reason_title', [
 				'label' => __( 'Title', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => 'Services Title',
+				'default' => 'Career Reason Title',
 			]
 		);
 
 		$team_repeater->add_control(
-			'service_text', [
+			'career_reason_text', [
 				'label' => __( 'Text', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::TEXTAREA,
 				'default' => 'Lorem ipsum sit amet',
@@ -53,12 +53,12 @@ class Widget_Custom_Elementor_HomeServices extends Widget_Base {
 		);
       	
 		$this->add_control(
-			'services_data',
+			'career_reasons_data',
 			[
 				'label' => __( 'Contents', 'elementor' ),
 				'type' => \Elementor\Controls_Manager::REPEATER,
 				'fields' => $team_repeater->get_controls(),
-				'title_field' => '{{{ service_title }}}',
+				'title_field' => '{{{ career_reason_title }}}',
 			]
 		);
       	$this->end_controls_section();
@@ -69,25 +69,25 @@ class Widget_Custom_Elementor_HomeServices extends Widget_Base {
       	$settings = $this->get_settings_for_display();
       	?>
       	<!-- Compatible section start -->
-      	<section class="pillars-section">
-	      	<div class="cykl-pillars-in">
+      	<section class="section-reasons-full">
+	      	<div class="reasons1">
 	      		<?php 
-					if ( $settings['services_data'] ) {
+					if ( $settings['career_reasons_data'] ) {
 						?>
-						<div class="section section-pillars">
-						    <div class="pillars">
+						<div class="section section-reasons">
+						    <div class="reasons">
 							<?php
-							foreach (  $settings['services_data'] as $item ) {
-								$service_title = $item['service_title'];
-								$service_text = $item['service_text'];
-								$service_image = $item['service_image'];
-								$service_image_url = $service_image['url'];
+							foreach (  $settings['career_reasons_data'] as $item ) {
+								$career_reason_title = $item['career_reason_title'];
+								$career_reason_text = $item['career_reason_text'];
+								$career_reason_image = $item['career_reason_image'];
+								$career_reason_image_url = $career_reason_image['url'];
 							?>
-				            <div class="pillar-item">
-				                <img src="<?php echo $service_image_url; ?>" alt=" " class="img-responsive">
+				            <div class="reason-item">
+				                <img src="<?php echo $career_reason_image_url; ?>" alt=" " class="img-responsive">
 				                <div class="intro">
-					                <h3><?php echo $service_title; ?></h3>
-					            	<p><?php echo  $service_text; ?></p>
+					                <h3><?php echo $career_reason_title; ?></h3>
+					            	<p><?php echo  $career_reason_text; ?></p>
 					            </div>
 				        	</div>
 							<?php	
@@ -105,17 +105,17 @@ class Widget_Custom_Elementor_HomeServices extends Widget_Base {
 			$(window).scroll(function() {    
     			var scroll = $(window).scrollTop();
     			var window_height = $( window ).height();
-    			var pillars_height = $('.pillars-section').offset().top;
+    			var pillars_height = $('.pillars-section,.section-reasons').offset().top;
     			add_class_after_height = pillars_height- window_height/2;
     			//console.log(add_class_after_height);
     			//console.log(scroll + "  "+ pillars_height + "  "+ window_height + "  "+ document_height);
 				if (scroll >= add_class_after_height) {
-     				$('.pillar-item').addClass('in-view');
+     				$('.pillar-item,.reason-item').addClass('in-view');
     			}
 			});
 		</script>
       	<?php
    }
 }
-Plugin::instance()->widgets_manager->register_widget_type( new Widget_Custom_Elementor_HomeServices() );
+Plugin::instance()->widgets_manager->register_widget_type( new Widget_Custom_Elementor_CareerReasons() );
 ?>

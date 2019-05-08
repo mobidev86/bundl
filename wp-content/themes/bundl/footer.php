@@ -70,12 +70,12 @@
 		$(window).scroll(function(){
 		  var sticky = $('#masthead'),
 		      scroll = $(window).scrollTop();
-
-		    
 			  if (scroll > 750 ){
 			  	sticky.addClass('sticky');
+			  	//$('ul.primary-menu').removeClass('enable_banner');
 			  } else {
 			  	sticky.removeClass('sticky');
+			  	//$('ul.primary-menu').addClass('enable_banner');
 			  }	
 		});		
 
