@@ -35,7 +35,13 @@
 	</div>
 	<?php twentysixteen_excerpt(); ?>
 	<div class="blogImage">
-		<?php twentysixteen_post_thumbnail(); ?>
+		<div class="post-thumbnail">
+		<?php 
+			//twentysixteen_post_thumbnail('full'); 
+			$url =  get_the_post_thumbnail_url(get_the_ID(), 'full');
+			echo "<img src='".$url."'>";
+		?>
+	</div>
 	</div>
 	<div class="singlecontainer">
 	<div class="blogContent">
@@ -53,7 +59,7 @@
                 </li>
             </ul>
         </div>
-        <div class="blogContent-in">        
+        <div class="blogContent-in">   
 		<?php
 			the_content();
 
@@ -90,7 +96,7 @@
 					<p><?php echo get_field('designation', 'user_'.get_the_author_meta( 'ID' )); ?></p>
 					<div class="auteur-socials socials">
 						<ul>
-							<li><a target="_blank" rel="nofollow" href="https://blog.bundl.com/@ThomasVH" title=""><i class="fa fa-medium-m" aria-hidden="true"></i></a>
+							<li><a target="_blank" rel="nofollow" href="https://blog.bundl.com/@ThomasVH" title=""><i class="fa fa-medium" aria-hidden="true"></i></a>
 							</li>
 							<li><a target="_blank" rel="nofollow" href="<?php echo get_field('linked_in_profile', 'user_'.get_the_author_meta( 'ID' )); ?>" title=""><i class="fa fa-linkedin" aria-hidden="true"></i></a>
 							</li>

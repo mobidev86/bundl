@@ -96,7 +96,8 @@ $(function () {
 
 	function initDrawAnimations() {
 		$('.draw').not('.not-animated').each(function (i) {
-			$(this).prepend('<object onload="applyDrawAnimation(' + i + ')" id="draw-' + i + '" type="image/svg+xml" data="' + templateUrl + '/assets/images/draw-animated.svg"></object>')
+
+			$(this).prepend('<object onload="applyDrawAnimation(' + i + ')" id="draw-' + i + '" type="image/svg+xml" data="http://192.168.1.36/bundl/wp-content/themes/bundl/images/draw-animated.svg"></object>')
 		})
 	}
 

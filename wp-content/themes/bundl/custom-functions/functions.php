@@ -9,6 +9,7 @@ function bundl_portfolio_callback(){
 	        'post_status' => array('publish'),
 	        'order' => 'DESC',
 	        'orderby' => 'date',
+	        'posts_per_page' => -1
 	    );
 
 	    $the_query = new WP_Query( $args );

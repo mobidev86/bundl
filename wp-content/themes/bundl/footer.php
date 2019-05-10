@@ -79,7 +79,33 @@
 			  }	
 		});		
 
+		/*ScrollTop Section*/
+		if($('#gform_2 div').hasClass('validation_error')){
+			if($(".contact-bottom-section").length){
+				$('html, body').animate({
+			        scrollTop: $(".contact-bottom-section").offset().top
+			    }, 2000);
+			}
+		}
+
+		if($('#gform_1 div').hasClass('validation_error')){
+			if($(".join-our-believers-form").length){
+				$('html, body').animate({
+			        scrollTop: $(".join-our-believers-form").offset().top
+			    }, 2000);
+			}    
+		}
+		if($('#gform_1 div').hasClass('validation_error')){
+			if($(".blognewsletter-form").length){
+				$('html, body').animate({
+			        scrollTop: $(".blognewsletter-form").offset().top
+			    }, 2000);
+			}    
+		}
+		/*ScrollTop Section End*/
 });
+
+
 		</script>
 </body>
 </html>

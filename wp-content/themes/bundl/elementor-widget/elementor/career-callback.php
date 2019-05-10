@@ -224,7 +224,7 @@ class Widget_Custom_Elementor_Career extends Widget_Base {
 						    			$state = get_field('state');
 										?>
 										<div class="row content col-sm-10 col-md-8 col-10">
-											<a href="<?php echo get_field('job_application_link'); ?>">
+											<a href="<?php echo get_field('job_application_link'); ?>" target="_blank">
 												<div class="align-self-center column-logo col-sm-2">
 													<img src="<?php echo $logo; ?>">
 												</div>
